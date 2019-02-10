@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+  sandbox:
+    image: jupyter/scipy-notebook:latest
+    container_name: sandbox
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/home/jovyan/work
+    command: bash -c "pip install xgboost && start-notebook.sh --NotebookApp.password='sha1:9e85964dd97b:3b513bc790862c954a2e5f8cde7c6579856f299d'"
+
+  keras:
+    image: jupyter/tensorflow-notebook
+    container_name: sandbox-tensorflow
+    ports:
+      - "8842:8888"
+    volumes:
+      - ./:/home/jovyan/work
+    command: bash -c "pip install xgboost && start-notebook.sh --NotebookApp.password='sha1:9e85964dd97b:3b513bc790862c954a2e5f8cde7c6579856f299d'"
